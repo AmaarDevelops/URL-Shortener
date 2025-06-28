@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="result-head">Your Shortened Url :</h2>
+<p><a href="{{ short_url }}" target="_blank" id="short-url">{{ short_url }}</a></p>
+<a href="{{ url_for('home') }}">Shorten Another</a>
+<p><strong>Click Counter :</strong>{{ clicks }}</p>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="dash-head"> Shortened Urls</h2>
+
+{% if urls %}
+<table border="1" cellpadding="10" class="dash-table">
+    <tr>
+        <th>Original Urls</th>
+        <th>Short Urls</th>
+        <th>Clicks</th>
+        <th>Delete</th>
+    </tr>
+    {% for url in urls %}
+    <tr>
+        <td>{{ url.original_url }}</td>
+        <td><a href="{{ request.host_url ~ url.short_id }}" target="_blank">
+            {{ request.host_url ~ url.short_id }}
+        </a></td>
+        <td>{{ url.clicks }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('delete_url',url_id=url.id) }}">
+                <button type="submit" onclick="return confirm('Delete This Url?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>No Urls Shortened Yet.</p>
+{% endif %}
+{% endblock %}

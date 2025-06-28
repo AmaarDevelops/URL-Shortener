@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="home-head">Shorten A URL</h2>
+<a href="{{ url_for('login') }}" class="login-main"><button class="login-main">Login</button></a>
+<a href="{{ url_for('register') }}" class="register-main"><button class="register-main">Register</button></a>
+<div class="home-main">
+<form action="/" method="POST" class="dawg">
+    <a href="{{ url_for('dashboard') }}" id="view"">View Dashboard</a><br>
+    <input type="url" name="original_url" placeholder="Enter your Long Url" required/><Br>
+    <input type="text" name="custom_id" placeholder="Enter Your Custom Short ID (optional)"/><br>
+    <button type="submit">Shorten</button>
+</form>
+</div>
+{% endblock %}
